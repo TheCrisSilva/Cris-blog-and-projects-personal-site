@@ -1,0 +1,16 @@
+[build]
+  publish = "public"
+  command = "git submodule update --init --recursive && hugo --gc --minify"
+
+[context.production.environment]
+  HUGO_VERSION = "0.128.0"
+  HUGO_ENV = "production"
+  HUGO_ENABLEGITINFO = "true"
+  HUGO_THEME = "hugo-profile"
+
+[context.deploy-preview]
+  command = "git submodule update --init --recursive && hugo --gc --minify --buildDrafts --buildFuture"
+  publish = "public"
+  [context.deploy-preview.environment]
+    HUGO_VERSION = "0.128.0"
+
